@@ -1,0 +1,50 @@
+doctype html
+
+mixin link(name)
+  link(rel="stylesheet" href="/themes/basic-zoom-theme/css/"+name+".css" media!=attributes.media)
+
+mixin links(...items)
+  each item in items
+    +link(item)
+
+html
+  head
+
+    title <dz:title>
+    | <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    | <meta name="keywords"  content="<dz:keywords>">
+    | <meta name="description" content="<dz:description>">
+    | <meta name="description" content="<dz:description>">
+    | <meta name="author" content="<dz:author>">
+    |
+    
+    // standard css
+    +links('content', 'widget', 'navigation', 'style', 'social')
+    +link('print')(media="print")
+    | <link rel="stylesheet" href="/static/zoom/bootstrap/bootstrap.min.css">
+    | <link rel="stylesheet" href="/static/zoom/jquery-ui/themes/smoothness/jquery-ui.min.css">
+    |
+    // app specific css
+    | <dz:styles>
+    |
+    // app specific head
+    | <dz:head>
+    |
+  
+  block body
+  
+  // tail
+  | <dz:tail>
+  |
+
+  // js
+  | <script src="/static/zoom/jquery/jquery.min.js"></script>
+  | <script src="/static/zoom/jquery-ui/jquery-ui.min.js"></script>
+  | <script src="/static/zoom/bootstrap/bootstrap.min.js"></script>
+  | <script src="/static/zoom/zoom.js"></script>
+  |
+  | <dz:libs>
+  script
+    | <dz:js>
+  |
+  | <script src="/static/zoom/fouc.js"></script>
