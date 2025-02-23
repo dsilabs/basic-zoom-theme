@@ -1,0 +1,33 @@
+
+stages:
+  - mirror
+
+mirror_to_github:
+  stage: mirror
+  image: alpine:latest
+
+  before_script:
+
+    - apk add --no-cache git openssh
+
+    - mkdir -p ~/.ssh
+    - echo "$DEPLOY_USER_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+
+  script:
+
+    - git config --global user.name "GitLab CI"
+    - git config --global user.email "marvin@dsilabs.ca"
+
+    - git clone --bare "$CI_REPOSITORY_URL" repo
+    - cd repo
+
+    - git remote add github git@github.com:dsilabs/basic-zoom.theme.git
+    # - git push github
+
+  only:
+    - master
+
+  variables:
+    SSH_PRIVATE_KEY: $SSH_PRIVATE_KEY
