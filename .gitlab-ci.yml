@@ -25,6 +25,3 @@ mirror_to_github:
 
   only:
     - master
-
-  variables:
-    DEPLOY_USER_PRIVATE_KEY: $DEPLOY_USER_PRIVATE_KEY
