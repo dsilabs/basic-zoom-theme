@@ -26,8 +26,8 @@ mirror_to_github:
     - git remote add github git@github.com:dsilabs/basic-zoom.theme.git
     # - git push github
 
-  only:
-    - master
+  # only:
+  #   - master
 
   variables:
-    SSH_PRIVATE_KEY: $SSH_PRIVATE_KEY
+    DEPLOY_USER_PRIVATE_KEY: $DEPLOY_USER_PRIVATE_KEY
