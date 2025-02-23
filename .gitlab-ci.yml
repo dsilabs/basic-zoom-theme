@@ -23,7 +23,7 @@ mirror_to_github:
     - git clone --bare "$CI_REPOSITORY_URL" repo
     - cd repo
 
-    - git remote add github git@github.com:dsilabs/basic-zoom.theme.git
+    - git remote add github git@github.com:dsilabs/basic-zoom-theme.git
     - git push github
 
   # only:
